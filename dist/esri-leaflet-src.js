@@ -2112,7 +2112,12 @@ EsriLeaflet.Layers.DynamicMapLayer = EsriLeaflet.Layers.RasterLayer.extend({
     }
 
     if(this.options.from && this.options.to){
-      params.time = this.options.from.valueOf() + ',' + this.options.to.valueOf();
+      if (this.options.from.valueOf() == this.options.to.valueOf()) {
+        params.time = this.options.from.valueOf();
+      }
+      else {
+        params.time = this.options.from.valueOf() + ',' + this.options.to.valueOf();
+      }
     }
 
     if(this._service.options.token) {
